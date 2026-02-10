@@ -20,10 +20,7 @@ jobs:
         include:
           - os: macos-14
             target: mac
-            arch: arm64
-          - os: macos-13
-            target: mac
-            arch: x64
+            arch: dual
           - os: windows-latest
             target: win
             arch: x64
@@ -73,14 +70,9 @@ jobs:
           cd desktop
           case "${{ matrix.target }}" in
             mac)
-              if [ "${{ matrix.arch }}" = "arm64" ]; then
-                npx electron-builder --mac dmg --arm64
-              elif [ "${{ matrix.arch }}" = "x64" ]; then
-                npx electron-builder --mac dmg --x64
-              else
-                echo "Unknown mac arch: ${{ matrix.arch }}"
-                exit 1
-              fi
+              # Build both Apple Silicon and Intel installers from one macOS job.
+              npx electron-builder --mac dmg --arm64
+              npx electron-builder --mac dmg --x64
               ;;
             win)
               npm run dist:win
