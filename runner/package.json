@@ -1,0 +1,11 @@
+{
+  "name": "nowallstreet-runner",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "serve": "node ./runner.mjs serve",
+    "doctor": "node ./runner.mjs doctor",
+    "install-agentd": "node ./runner.mjs install-agentd"
+  }
+}

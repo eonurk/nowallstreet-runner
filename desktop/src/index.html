@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoWallStreet Runner</title>
+    <style>
+      :root {
+        --bg: #f5f8fc;
+        --card: #ffffff;
+        --line: #d5dfef;
+        --text: #14213d;
+        --muted: #4f6b95;
+        --accent: #1658d8;
+        --ok: #0b8f4d;
+        --warn: #a76400;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "IBM Plex Sans", "Helvetica Neue", sans-serif;
+        background: radial-gradient(1200px 500px at 10% -10%, #e6efff 0%, var(--bg) 55%);
+        color: var(--text);
+      }
+      .wrap {
+        padding: 20px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--card);
+        padding: 16px;
+        box-shadow: 0 10px 25px rgba(7, 25, 56, 0.06);
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 12px;
+      }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 6px 12px;
+        border: 1px solid var(--line);
+        font-size: 12px;
+      }
+      .ok {
+        color: var(--ok);
+        border-color: #bfe8d0;
+        background: #edfbf4;
+      }
+      .warn {
+        color: var(--warn);
+        border-color: #efd8b2;
+        background: #fff8ea;
+      }
+      button {
+        border: 1px solid #adc3ea;
+        border-radius: 10px;
+        padding: 9px 12px;
+        background: #f0f5ff;
+        color: #19458d;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      button.primary {
+        border-color: #1658d8;
+        background: #1658d8;
+        color: #fff;
+      }
+      .grid {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .line {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #f9fbff;
+        padding: 10px;
+      }
+      .label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .value {
+        margin-top: 3px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>NoWallStreet Runner</h1>
+        <div id="runnerStatus" class="status-pill warn">Checking runner...</div>
+        <div class="grid">
+          <div class="line">
+            <div class="label">Runner Endpoint</div>
+            <div class="value mono">127.0.0.1:18100</div>
+          </div>
+          <div class="line">
+            <div class="label">Agent Runtime</div>
+            <div id="agentdStatus" class="value">Detecting...</div>
+          </div>
+          <div class="line">
+            <div class="label">Runner State Folder</div>
+            <div id="stateDir" class="value mono">~/.nowallstreet/runner</div>
+          </div>
+        </div>
+        <div class="row">
+          <button id="refreshBtn">Refresh</button>
+          <button id="openFolderBtn">Open Runner Folder</button>
+          <button id="openProfileBtn" class="primary">Open NoWallStreet</button>
+        </div>
+      </div>
+    </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
