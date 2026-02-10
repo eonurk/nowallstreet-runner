@@ -5,3 +5,5 @@ desktop/dist/
 agent/dist/
 *.log
 *.pid
+
+agent/agentd
